@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Collider collider;
     public Rigidbody myRb;
     public float moveSpeed = 5f;
     public float jumpForce = 500f;
+    private float extraHeight = 0.1f;
     
     void Update()
     {
@@ -14,11 +16,12 @@ public class PlayerController : MonoBehaviour
         
         myRb.velocity = new Vector3(moveSpeed * moveInput, myRb.velocity.y, 0);
 
-        //var jumpInput = Input.GetKeyDown(KeyCode.Space);
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        bool isGrounded = Physics.Raycast(collider.bounds.center, Vector3.down, collider.bounds.extents.y + extraHeight);
+        
+        if (Input.GetKeyDown(KeyCode.Space) & isGrounded)
         {
             myRb.AddForce(0, jumpForce, 0);
         }
     }
+
 }
