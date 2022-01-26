@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Collider collider;
-    public Rigidbody myRb;
+    [SerializeField] private Rigidbody myRb;
     public float moveSpeed = 5f;
     public float jumpForce = 500f;
     private float extraHeight = 0.1f;
@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour
         
         myRb.velocity = new Vector3(moveSpeed * moveInput, myRb.velocity.y, 0);
 
-        bool isGrounded = Physics.Raycast(collider.bounds.center, Vector3.down, collider.bounds.extents.y + extraHeight);
+        Ray sphereCastRay = new Ray(transform.position, Vector3.down);
+        bool isGrounded = Physics.SphereCast(sphereCastRay, collider.bounds.extents.x, collider.bounds.extents.y + 0.05f);
+        
         
         if (Input.GetKeyDown(KeyCode.Space) & isGrounded)
         {
