@@ -13,6 +13,10 @@ GameObject:
   - component: {fileID: 8141691100688143267}
   - component: {fileID: 8141691100688143264}
   - component: {fileID: 8141691100688143276}
+  - component: {fileID: 1668002101}
+  - component: {fileID: 1668002102}
+  - component: {fileID: 1668002103}
+  - component: {fileID: 1668002104}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -113,5 +117,64 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1668002101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141691100688143265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4daaf24ab6109d145a0fb2c304bb129d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collide: {fileID: 8141691100688143264}
+--- !u!114 &1668002102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141691100688143265}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241e46fbbe8a7f9419dd1b2ad5b8ce47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundChecker: {fileID: 1668002101}
+  rb: {fileID: 8141691100688143276}
+  jumpForce: 700
+--- !u!114 &1668002103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141691100688143265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f241efa123b504b498183dae578e3c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 5
+  rb: {fileID: 8141691100688143276}
+--- !u!114 &1668002104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141691100688143265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee60a167b9e8764189f9909e7ed53a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundChecker: {fileID: 1668002101}
+  rb: {fileID: 8141691100688143276}
+  minJumpForce: 300
+  maxJumpForce: 800
+  jumpChargeTime: 1
