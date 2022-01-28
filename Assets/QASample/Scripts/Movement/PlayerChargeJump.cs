@@ -10,7 +10,7 @@ public class PlayerChargeJump : MonoBehaviour
     [SerializeField] private float minJumpForce = 300f;
     [SerializeField] private float maxJumpForce = 800f;
     [SerializeField] private float jumpChargeTime = 1f;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private CommandContainer commandContainer;
     private float chargeProgress;
     void Update()
     {
@@ -20,12 +20,12 @@ public class PlayerChargeJump : MonoBehaviour
     {
 
         
-        if (playerInput.jumpInput)
+        if (commandContainer.jumpCommand)
         {
             chargeProgress += Time.deltaTime / jumpChargeTime;
         }
         
-        if (playerInput.jumpInputUp)
+        if (commandContainer.jumpCommandUp)
         {
             var jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, chargeProgress);
             chargeProgress = 0f;

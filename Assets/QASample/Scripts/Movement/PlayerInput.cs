@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] private CommandContainer commandContainer;
     public float walkInput { get; private set; }
     public bool jumpInputDown { get; private set; }
     public bool jumpInputUp { get; private set; }
@@ -11,6 +12,7 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         GetInput();
+        SetCommands();
     }
     
     private void GetInput()
@@ -19,5 +21,13 @@ public class PlayerInput : MonoBehaviour
         jumpInputDown = Input.GetKeyDown(KeyCode.Space);
         jumpInput = Input.GetKey(KeyCode.Space);
         jumpInputUp = Input.GetKeyUp(KeyCode.Space);
+    }
+
+    private void SetCommands()
+    {
+        commandContainer.walkCommand = walkInput;
+        commandContainer.jumpCommand = jumpInput;
+        commandContainer.jumpCommandDown = jumpInputDown;
+        commandContainer.jumpCommandUp = jumpInputUp;
     }
 }

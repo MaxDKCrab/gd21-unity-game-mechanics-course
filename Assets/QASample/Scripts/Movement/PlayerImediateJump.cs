@@ -7,14 +7,14 @@ public class PlayerImediateJump : MonoBehaviour
     [SerializeField] private GroundChecker groundChecker;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float jumpForce = 500f;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private CommandContainer commandContainer;
     void Update()
     {
         Jump();
     }
     private void Jump()
     {
-        if (playerInput.jumpInputDown & groundChecker.GroundCheck())
+        if (commandContainer.jumpCommandDown & groundChecker.GroundCheck())
         {
             rb.AddForce(0, jumpForce, 0);
         }
