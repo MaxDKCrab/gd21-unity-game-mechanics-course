@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public float walkInput;
-    public bool jumpInputDown;
-    public bool jumpInputUp;
-    public bool jumpInput;
+    public float walkInput { get; private set; }
+    public bool jumpInputDown { get; private set; }
+    public bool jumpInputUp { get; private set; }
+    public bool jumpInput { get; private set; }
     private void Update()
     {
         GetInput();
