@@ -10,7 +10,8 @@ public class PlayerChargeJump : MonoBehaviour
     [SerializeField] private float minJumpForce = 300f;
     [SerializeField] private float maxJumpForce = 800f;
     [SerializeField] private float jumpChargeTime = 1f;
-    private float chargeProgress = 0f;
+    [SerializeField] private PlayerInput playerInput;
+    private float chargeProgress;
     void Update()
     {
         Jump();
@@ -18,13 +19,13 @@ public class PlayerChargeJump : MonoBehaviour
     private void Jump()
     {
 
-        var chargeInput = Input.GetKey(KeyCode.Space);
-        if (chargeInput)
+        
+        if (playerInput.jumpInput)
         {
             chargeProgress += Time.deltaTime / jumpChargeTime;
         }
         
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (playerInput.jumpInputUp)
         {
             var jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, chargeProgress);
             chargeProgress = 0f;
